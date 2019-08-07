@@ -133,6 +133,11 @@ function createArticle(data) {
   articleDiv.appendChild(thirdParagraph);
   articleDiv.appendChild(articleButton);
 
+  // set class names
+  articleDiv.classList.add('article');
+  articleDate.classList.add('date');
+  articleButton.classList.add('expandButton');
+
 
 
   // return
