@@ -138,6 +138,14 @@ function createArticle(data) {
   articleDate.classList.add('date');
   articleButton.classList.add('expandButton');
 
+  // set content
+  articleTitle.textContent = data.title;
+  articleDate.textContent = data.date;
+  firstParagraph.textContent = data.firstParagraph;
+  secondParagraph.textContent = data.secondParagraph;
+  thirdParagraph.textContent = data.thirdParagraph;
+  articleButton.textContent = "Click here";
+
 
 
   // return
