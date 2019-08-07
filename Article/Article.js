@@ -116,6 +116,15 @@ const data = [
 // function
 function createArticle(data) {
 
+  // define new elements
+  const articleDiv = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const articleButton = document.createElement('span');
+
 
 
   // return
