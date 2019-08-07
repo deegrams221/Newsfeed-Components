@@ -112,30 +112,24 @@ const data = [
  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article
 */
 
-window.addEventListener('load', () => {
+window.addEventListener('load', (e) => {
 
 const articles = document.querySelector('.articles');
 
-
-data.forEach(data => {
-  //console.log('creating article:', data.title);
-  articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
-});
-
-
 // function
-function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
 
   // define new elements
   const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
-  const articleDate = document.createElement('date');
+  const articleDate = document.createElement('p');
   const articleFirstParagraph = document.createElement('p');
   const articleSecondParagraph = document.createElement('p');
   const articleThirdParagraph = document.createElement('p');
-  const articleButton = document.createElement('button');
+  const articleButton = document.createElement('span');
 
-  // structure setup
+  // structure setup (append elements)
+  articles.appendChild(article);
   article.appendChild(articleTitle);
   article.appendChild(articleDate);
   article.appendChild(articleFirstParagraph);
@@ -143,30 +137,36 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   article.appendChild(articleThirdParagraph);
   article.appendChild(articleButton);
 
-  // set class names
-  article.classList.add('article');
-  articleTitle.classList.add('h2');
-  articleDate.classList.add('date');
-  articleFirstParagraph.classList.add('article');
-  articleSecondParagraph.classList.add('article');
-  articleThirdParagraph.classList.add('article');
-  articleButton.classList.add('expandButton');
-
   // set content
   articleTitle.textContent = title;
   articleDate.textContent = date;
-  firstParagraph.textContent = firstParagraph;
-  secondParagraph.textContent = secondParagraph;
-  thirdParagraph.textContent = thirdParagraph;
+  articleFirstParagraph.textContent = firstParagraph;
+  articleSecondParagraph.textContent = secondParagraph;
+  articleThirdParagraph.textContent = thirdParagraph;
   articleButton.textContent = 'Expand';
 
-  // button event
-  articleButton.addEventListener('click', () => {
+  // set class names
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  articleButton.classList.add('expandButton');
+
+  // button event listener
+  articleButton.addEventListener('click', (e) => {
     article.classList.toggle('article-open');
   });
 
   // return
   return article;
-}
+};
+
+// forEach
+data.forEach(data => {
+  //console.log('creating article:', data.title);
+  articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+});
+
+// map
+
+
 
 });
