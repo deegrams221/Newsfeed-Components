@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Step 5: New Array in 2019',
+    date: 'Aug 7st, 2019',
+    firstParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+
+    secondParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque egestas diam in arcu cursus euismod quis. Sapien eget mi proin sed libero. Orci eu lobortis elementum nibh tellus molestie nunc. Facilisi etiam dignissim diam quis enim. Amet dictum sit amet justo donec enim. Amet tellus cras adipiscing enim eu turpis. Nisl rhoncus mattis rhoncus urna neque viverra justo. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Amet mattis vulputate enim nulla aliquet porttitor. Netus et malesuada fames ac. Est lorem ipsum dolor sit amet consectetur. Scelerisque purus semper eget duis at tellus at. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus. Urna molestie at elementum eu facilisis sed odio. At volutpat diam ut venenatis tellus in. Placerat vestibulum lectus mauris ultrices eros in cursus turpis. Tristique nulla aliquet enim tortor. Varius morbi enim nunc faucibus a pellentesque sit. `,
+
+    thirdParagraph: `Arcu risus quis varius quam quisque id diam. Congue mauris rhoncus aenean vel elit. Praesent tristique magna sit amet purus gravida quis blandit. Ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus. Non blandit massa enim nec. In iaculis nunc sed augue lacus. Sed libero enim sed faucibus turpis in. At tellus at urna condimentum mattis pellentesque id nibh. Egestas purus viverra accumsan in nisl nisi scelerisque eu ultrices. Ultrices vitae auctor eu augue ut lectus. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Donec et odio pellentesque diam. Mi in nulla posuere sollicitudin aliquam ultrices sagittis. Vestibulum lorem sed risus ultricies tristique. Nisl purus in mollis nunc. Sed faucibus turpis in eu mi bibendum neque. Varius duis at consectetur lorem donec massa sapien faucibus.`
   }
 ];
 
@@ -114,59 +123,66 @@ const data = [
 
 window.addEventListener('load', (e) => {
 
-const articles = document.querySelector('.articles');
+  const articles = document.querySelector('.articles');
 
-// function
-const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+  // function
+  const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
 
-  // define new elements
-  const article = document.createElement('div');
-  const articleTitle = document.createElement('h2');
-  const articleDate = document.createElement('p');
-  const articleFirstParagraph = document.createElement('p');
-  const articleSecondParagraph = document.createElement('p');
-  const articleThirdParagraph = document.createElement('p');
-  const articleButton = document.createElement('span');
+    // define new elements
+    const article = document.createElement('div');
+    const articleTitle = document.createElement('h2');
+    const articleDate = document.createElement('p');
+    const articleFirstParagraph = document.createElement('p');
+    const articleSecondParagraph = document.createElement('p');
+    const articleThirdParagraph = document.createElement('p');
+    const articleButton = document.createElement('span');
 
-  // structure setup (append elements)
-  articles.appendChild(article);
-  article.appendChild(articleTitle);
-  article.appendChild(articleDate);
-  article.appendChild(articleFirstParagraph);
-  article.appendChild(articleSecondParagraph);
-  article.appendChild(articleThirdParagraph);
-  article.appendChild(articleButton);
+    // structure setup (append elements)
+    articles.appendChild(article);
+    article.appendChild(articleTitle);
+    article.appendChild(articleDate);
+    article.appendChild(articleFirstParagraph);
+    article.appendChild(articleSecondParagraph);
+    article.appendChild(articleThirdParagraph);
+    article.appendChild(articleButton);
 
-  // set content
-  articleTitle.textContent = title;
-  articleDate.textContent = date;
-  articleFirstParagraph.textContent = firstParagraph;
-  articleSecondParagraph.textContent = secondParagraph;
-  articleThirdParagraph.textContent = thirdParagraph;
-  articleButton.textContent = 'Expand';
+    // set content
+    articleTitle.textContent = title;
+    articleDate.textContent = date;
+    articleFirstParagraph.textContent = firstParagraph;
+    articleSecondParagraph.textContent = secondParagraph;
+    articleThirdParagraph.textContent = thirdParagraph;
+    articleButton.textContent = 'Expand';
 
-  // set class names
-  article.classList.add('article');
-  articleDate.classList.add('date');
-  articleButton.classList.add('expandButton');
+    // set class names
+    article.classList.add('article');
+    articleDate.classList.add('date');
+    articleButton.classList.add('expandButton');
 
-  // button event listener
-  articleButton.addEventListener('click', (e) => {
-    article.classList.toggle('article-open');
+    // button event listener
+    articleButton.addEventListener('click', (e) => {
+      article.classList.toggle('article-open');
+    });
+
+    // return
+    return article;
+  };
+
+  // forEach
+  data.forEach(data => {
+    //console.log('creating article:', data.title);
+    articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
   });
 
-  // return
-  return article;
-};
+  // map
+  let newArticles = data.map((data) => {
+    let newArticle = createArticle(data);
 
-// forEach
-data.forEach(data => {
-  //console.log('creating article:', data.title);
-  articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
-});
+    return newArticle;
+  });
 
-// map
-
-
-
+  // adds the mapped elements to the DOM
+  newArticles.forEach(data => {
+    articles.appendChild(data);
+  });
 });
