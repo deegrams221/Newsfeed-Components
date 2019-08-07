@@ -112,11 +112,13 @@ const data = [
  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article
 */
 
-const articles = document.querySelectorAll('.articles');
+window.addEventListener('load', () => {
+
+const articles = document.querySelector('.articles');
 
 
 data.forEach(data => {
-  console.log('creating article:', data.title);
+  //console.log('creating article:', data.title);
   articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
 });
 
@@ -158,8 +160,13 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   thirdParagraph.textContent = thirdParagraph;
   articleButton.textContent = 'Expand';
 
-
+  // button event
+  articleButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  });
 
   // return
   return article;
 }
+
+});
