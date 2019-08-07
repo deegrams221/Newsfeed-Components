@@ -112,42 +112,47 @@ const data = [
  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article
 */
 
+const articles = document.querySelectorAll('.articles');
+
+data.forEach(data => {
+  //console.log('creating article:', data.title);
+  articles.appendChild(createArticles(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+});
 
 // function
-function createArticle(data) {
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
 
   // define new elements
-  const articleDiv = document.createElement('div');
+  const articles = document.createElement('div');
   const articleTitle = document.createElement('h2');
   const articleDate = document.createElement('p');
-  const firstParagraph = document.createElement('p');
-  const secondParagraph = document.createElement('p');
-  const thirdParagraph = document.createElement('p');
+  const articleFirstParagraph = document.createElement('p');
+  const articleSecondParagraph = document.createElement('p');
+  const articleThirdParagraph = document.createElement('p');
   const articleButton = document.createElement('span');
 
   // structure setup
-  articleDiv.appendChild(articleTitle);
-  articleDiv.appendChild(articleDate);
-  articleDiv.appendChild(firstParagraph);
-  articleDiv.appendChild(secondParagraph);
-  articleDiv.appendChild(thirdParagraph);
-  articleDiv.appendChild(articleButton);
+  articles.appendChild(articleTitle);
+  articles.appendChild(articleDate);
+  articles.appendChild(articleFirstParagraph);
+  articles.appendChild(articleSecondParagraph);
+  articles.appendChild(articleThirdParagraph);
+  articles.appendChild(articleButton);
 
   // set class names
-  articleDiv.classList.add('article');
+  articles.classList.add('articles');
   articleDate.classList.add('date');
   articleButton.classList.add('expandButton');
 
   // set content
-  articleTitle.textContent = data.title;
-  articleDate.textContent = data.date;
-  firstParagraph.textContent = data.firstParagraph;
-  secondParagraph.textContent = data.secondParagraph;
-  thirdParagraph.textContent = data.thirdParagraph;
-  articleButton.textContent = "Click here";
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  firstParagraph.textContent = firstParagraph;
+  secondParagraph.textContent = secondParagraph;
+  thirdParagraph.textContent = thirdParagraph;
 
 
 
   // return
-  return articleDiv;
+  return articles;
 }
