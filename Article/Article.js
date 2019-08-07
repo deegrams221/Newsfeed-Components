@@ -114,34 +114,40 @@ const data = [
 
 const articles = document.querySelectorAll('.articles');
 
+
 data.forEach(data => {
-  //console.log('creating article:', data.title);
-  articles.appendChild(createArticles(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+  console.log('creating article:', data.title);
+  articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
 });
+
 
 // function
 function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
 
   // define new elements
-  const articles = document.createElement('div');
+  const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
-  const articleDate = document.createElement('p');
+  const articleDate = document.createElement('date');
   const articleFirstParagraph = document.createElement('p');
   const articleSecondParagraph = document.createElement('p');
   const articleThirdParagraph = document.createElement('p');
-  const articleButton = document.createElement('span');
+  const articleButton = document.createElement('button');
 
   // structure setup
-  articles.appendChild(articleTitle);
-  articles.appendChild(articleDate);
-  articles.appendChild(articleFirstParagraph);
-  articles.appendChild(articleSecondParagraph);
-  articles.appendChild(articleThirdParagraph);
-  articles.appendChild(articleButton);
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleFirstParagraph);
+  article.appendChild(articleSecondParagraph);
+  article.appendChild(articleThirdParagraph);
+  article.appendChild(articleButton);
 
   // set class names
-  articles.classList.add('articles');
+  article.classList.add('article');
+  articleTitle.classList.add('h2');
   articleDate.classList.add('date');
+  articleFirstParagraph.classList.add('article');
+  articleSecondParagraph.classList.add('article');
+  articleThirdParagraph.classList.add('article');
   articleButton.classList.add('expandButton');
 
   // set content
@@ -150,9 +156,10 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   firstParagraph.textContent = firstParagraph;
   secondParagraph.textContent = secondParagraph;
   thirdParagraph.textContent = thirdParagraph;
+  articleButton.textContent = 'Expand';
 
 
 
   // return
-  return articles;
+  return article;
 }
