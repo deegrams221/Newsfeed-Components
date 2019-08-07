@@ -125,6 +125,14 @@ function createArticle(data) {
   const thirdParagraph = document.createElement('p');
   const articleButton = document.createElement('span');
 
+  // structure setup
+  articleDiv.appendChild(articleTitle);
+  articleDiv.appendChild(articleDate);
+  articleDiv.appendChild(firstParagraph);
+  articleDiv.appendChild(secondParagraph);
+  articleDiv.appendChild(thirdParagraph);
+  articleDiv.appendChild(articleButton);
+
 
 
   // return
